@@ -1,0 +1,86 @@
+@font-face{
+	font-family: myFirstFont;
+    src:url('../sansation/Sansation_Light.ttf');
+}
+@font-face
+{
+	font-family: myFirstFont;
+	src: url('../sansation/Sansation_Bold.ttf');
+	font-weight:bold;
+}
+
+body{
+	background-color:#2B57B1; 
+	font-family: myFirstFont;
+	font-size: 22px;
+}
+div.container{
+	text-align: center;
+}
+div.header{
+	color: #fff;
+	height:340px;
+	font-size: 100px;
+	text-shadow:5px 5px 5px #071C4B;
+}
+hr{
+	border:2.5px inset #254DB7;
+	width: 80%;
+}
+p{
+	font-size: 30px;
+	color: #030303;
+}
+
+div.sign-login{
+	text-align: center;
+	margin: 5% 10% ;
+}
+
+div.input{
+	float: left;
+	margin: 0 30px;
+	padding: 0 20px;
+	text-align: center;
+}
+input{
+	margin: 20px;
+	padding: 10px;
+	font-size: 18px;
+	box-shadow: 2px 2px 3px 2px #162E61;
+	width: 50%px;
+	height: 35px;
+	border-radius: 5px;
+}
+#login{
+	margin: 20px;
+	padding: 24px;
+	text-align: left;
+}
+button{
+	background-color:#e1e3e6;
+	border:1px solid #2B57B1;
+	box-shadow: 2px 2px 5px 2px #162E61;
+	border-radius: 5px;
+	width: 100px;
+	height: 28px; 
+}
+button:active{
+	font-family: myFirstFont;
+	background-color: #fff;
+}
+a{
+	color: #fff;
+	box-shadow: 2px 2px 2px 2px #162E61;
+	border-radius: 2px;
+	padding: 5px;
+	text-shadow:2px 2px 3px #162E61;
+	text-decoration: none;
+}
+.sign{
+	text-align: center;
+}
+a:active{
+	color: #000;
+	margin: 2px;
+}
