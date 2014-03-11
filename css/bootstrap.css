@@ -578,6 +578,7 @@ cite {
 }
 
 .page-header {
+  color:#fff;
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid #eeeeee;
@@ -2683,8 +2684,8 @@ input[type="button"].btn-block {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+  src: url('/css/fonts/glyphicons-halflings-regular.eot');
+  src: url('/css/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/css/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/css/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/css/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
 .glyphicon {
@@ -7136,6 +7137,10 @@ div.header{
   height:340px;
   font-size: 50px;
   text-shadow:5px 5px 5px #071C4B;
+}
+div.header2{
+  color:#fff;
+  /*text-shadow:2px 2px 2px #071C4B;*/
 }
 body{
   background-color:#2B57B1; 

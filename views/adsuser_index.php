@@ -2,7 +2,10 @@
   <head>
     <meta name="viewport" content="width=decice-width,uer-scalable=no">
     <title>Sign Up</title>
+    <script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+
     <style type="text/css">
     body{
       padding: 60px;
@@ -12,97 +15,8 @@
         font-size: 20px;
         color: #fff;
         }
-        html,body{font-size:12px;margin:0px;height:100%;}
-        .mesWindow{border:#666 1px solid;background:#fff;}
-        .mesWindowTop{border-bottom:#eee 1px solid;margin-left:4px;padding:3px;font-weight:bold;text-align:left;font-size:12px;}
-        .mesWindowContent{margin:4px;font-size:12px;}
-        .mesWindow .close{height:15px;width:28px;border:none;cursor:pointer;text-decoration:underline;background:#fff}
-    </style>
-    <script>
-        var isIe=(document.all)?true:false;
-        //设置select的可见状态
-        function setSelectState(state)
-        {
-        var objl=document.getElementsByTagName('select');
-        for(var i=0;i<objl.length;i++)
-        {
-        objl[i].style.visibility=state;
-        }
-        }
-        function mousePosition(ev)
-        {
-        if(ev.pageX || ev.pageY)
-        {
-        return {x:ev.pageX, y:ev.pageY};
-        }
-        return {
-        x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,y:ev.clientY + document.body.scrollTop - document.body.clientTop
-        };
-        }
-        //弹出方法
-        function showMessageBox(wTitle,content,pos,wWidth)
-        {
-        closeWindow();
-        var bWidth=parseInt(document.documentElement.scrollWidth);
-        var bHeight=parseInt(document.documentElement.scrollHeight);
-        if(isIe){
-        setSelectState('hidden');}
-        var back=document.createElement("div");
-        back.id="back";
-        var styleStr="top:0px;left:0px;position:absolute;background:#666;width:"+bWidth+"px;height:"+bHeight+"px;";
-        styleStr+=(isIe)?"filter:alpha(opacity=0);":"opacity:0;";
-        back.style.cssText=styleStr;
-        document.body.appendChild(back);
-        showBackground(back,50);
-        var mesW=document.createElement("div");
-        mesW.id="mesWindow";
-        mesW.className="mesWindow";
-        mesW.innerHTML="<div class='mesWindowTop'><table width='100%' height='100%'><tr><td>"+wTitle+"</td><td style='width:1px;'><input type='button' onclick='closeWindow();' title='关闭窗口' class='close' value='×' /></td></tr></table></div><div class='mesWindowContent' id='mesWindowContent'>"+content+"</div><div class='mesWindowBottom'></div>";
-        var v_top=(document.body.clientHeight-mesW.clientHeight)/2;
-        v_top+=document.documentElement.scrollTop;
-        styleStr="top:"+(v_top-180)+"px;left:"+(document.body.clientWidth/2-mesW.clientWidth/2)+"px;position:absolute;width:600px;margin-left:-300px;left:50%;z-index:9999;";
-        mesW.style.cssText=styleStr;
-        document.body.appendChild(mesW);
-        }
-        //让背景渐渐变暗
-        function showBackground(obj,endInt)
-        {
-        if(isIe)
-        {
-        obj.filters.alpha.opacity+=5;
-        if(obj.filters.alpha.opacity<endInt)
-        {
-        setTimeout(function(){showBackground(obj,endInt)},5);
-        }
-        }else{
-        var al=parseFloat(obj.style.opacity);al+=0.05;
-        obj.style.opacity=al;
-        if(al<(endInt/100))
-        {setTimeout(function(){showBackground(obj,endInt)},5);}
-        }
-        }
-        //关闭窗口
-        function closeWindow()
-        {
-        if(document.getElementById('back')!=null)
-        {
-        document.getElementById('back').parentNode.removeChild(document.getElementById('back'));
-        }
-        if(document.getElementById('mesWindow')!=null)
-        {
-        document.getElementById('mesWindow').parentNode.removeChild(document.getElementById('mesWindow'));
-        }
-        if(isIe){
-        setSelectState('');}
-        }
-        //测试弹出
-        function testMessageBox(ev)
-        {
-        var objPos = mousePosition(ev);
-        messContent="<div style='padding:20px 0 20px 0;text-align:center'></div>";
-        showMessageBox('添加联系人',messContent,objPos,350);
-        }
-        </script>
+     </style>
+
   </head>
   <body>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/views/ads_nav_user.php';?>
@@ -111,184 +25,130 @@
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">
-          <div class="panel-heading-left">ADS Book--Manage My friend!--<a href="#" onclick="testMessageBox(event);">添加</a></div>
+          <div class="panel-heading-left">ADS Book--Manage My friend!</div>
            <div class="row panel-heading-right">
 
         <div class="col-lg-3">
 
+          <form action="" method="post">
           <div class="input-group">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="cms">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">查找</button>
+              <button class="btn btn-default " type="submit" name="search" title="查找"> <span class="glyphicon glyphicon-search"></span> .</button>
             </span>
 
           </div><!-- /input-group -->
+          </form>
+
         </div><!-- /.col-lg-6 -->
       </div><!-- /.row -->        </div>
-       
-         
+
+
         <!-- Table -->
         <table class="table table-hover">
           <thead>
             <tr>
-              
-              <th>姓名</th>
-              <th>生日</th>              
-              <th>电话</th>
-              <th>住址</th>
-              <th>邮箱</th>
-              <th>行业</th>
-              <th>操作</th>
+
+              <th title="姓名"><span class="glyphicon glyphicon-user"></span></th>
+              <th title="出生日期"><span class="glyphicon glyphicon-bold"></span></th>
+              <th title="联系方式"><span class="glyphicon glyphicon-earphone"></span></th>
+              <th title="住址"><span class="glyphicon glyphicon-map-marker"></span></th>
+              <th title="邮箱"><span class="glyphicon glyphicon-envelope"></span></th>
+              <th title="行业"><span class="glyphicon glyphicon-briefcase"></span></th>
+              <th title="操作"><span class="glyphicon glyphicon-wrench"></span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
             </tr>
+            <?php $i=0; if(isset($datas)): ?>
+            <?php foreach($datas as $data): ?>
             <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
+              <td id="f_name<?php echo $i;?>"><?php echo $data['f_name']; ?></td>
+              <td id="f_date<?php echo $i;?>"><?php echo $data['f_date']; ?></td>
+              <td id="f_phone<?php echo $i;?>"><?php echo $data['f_phone']; ?></td>
+              <td id="f_address<?php echo $i;?>"><?php echo $data['f_address']; ?></td>
+              <td id="f_email<?php echo $i;?>"><?php echo $data['f_email']; ?></td>
+              <td id="f_work<?php echo $i;?>"><?php echo $data['f_work']; ?></td>
+              <td><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/controller?fri_id='.$data['fri_id'];?>" title="删除"> <span class="glyphicon glyphicon-trash"></span></a>/
+                  <a href="" title="编辑" onclick="
+	document.getElementById('f_name').value = document.getElementById('f_name<?php echo $i;?>').innerHTML;
+	document.getElementById('f_date').value = document.getElementById('f_date<?php echo $i;?>').innerHTML;
+	document.getElementById('f_phone').value = document.getElementById('f_phone<?php echo $i;?>').innerHTML;
+	document.getElementById('f_address').value = document.getElementById('f_address<?php echo $i;?>').innerHTML;
+	document.getElementById('f_email').value = document.getElementById('f_email<?php echo $i;?>').innerHTML;
+	document.getElementById('f_work').value = document.getElementById('f_work<?php echo $i;?>').innerHTML;
+	document.getElementById('fri_id').value = <?php echo $data['fri_id'];?>;"
+	 data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-pencil"></span></td>
             </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
-            <tr>
-              
-              <td>Mark</td>
-              <td>1994.14</td>
-              <td>18826420127</td>
-              <td>广州番禺区大学城外环路100号</td>
-              <td>646840080@qq.com</td>
-              <td>电视电子</td>
-              <td>删除/编辑</td>
-            </tr>
+            <?php $i++; endforeach; ?>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>
     </div>
-  </div><html>
 
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	<form action="http://<?php echo $_SERVER['HTTP_HOST'];?>/controller/" method="post">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">ADS Book | Manage Your friend!</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="input-group userinput">
+          <span class="input-group-addon " title="姓名"><span class="glyphicon glyphicon-user"></span></span>
+           <input type="text" class="form-control" name="f_name" id="f_name" >
+         </div>
+
+         <div class="input-group userinput">
+          <span class="input-group-addon" title="出生日期"><span class="glyphicon glyphicon-bold"></span></span>
+           <input type="text" class="form-control" name="f_date"  id="f_date">
+         </div>
+
+         <div class="input-group userinput">
+          <span class="input-group-addon" title="联系方式"><span class="glyphicon glyphicon-earphone"></span></span>
+           <input type="text" class="form-control" name="f_phone" id="f_phone">
+         </div>
+
+         <div class="input-group userinput">
+          <span class="input-group-addon" title="住址"><span class="glyphicon glyphicon-map-marker"></span></span>
+           <input type="text" class="form-control" name="f_address" id="f_address">
+         </div>
+
+         <div class="input-group userinput">
+          <span class="input-group-addon" title="邮箱"><span class="glyphicon glyphicon-envelope"></span></span>
+           <input type="text" class="form-control" name="f_email" id="f_email">
+         </div>
+         <div class="input-group userinput">
+          <span class="input-group-addon" title="行业"><span class="glyphicon glyphicon-briefcase"></span></span>
+           <input type="text" class="form-control" name="f_work" id="f_work">
+         </div>
+         <div></div>
+        <div class="userbutton">
+         <input type="hidden" name="fri_id" id="fri_id">
+         </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="insert_update"><span class="glyphicon glyphicon-ok-sign"></span></button>
+      </div>
+    </div><!-- /.modal-content -->
+</form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script>
+function edit_fri(id,fri_id){
+	
+}
+</script>
 </html>
   </body>
 </html>
